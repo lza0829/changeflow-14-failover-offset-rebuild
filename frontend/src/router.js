@@ -7,6 +7,7 @@ import Ledger from './pages/Ledger.vue'
 import Quarantine from './pages/Quarantine.vue'
 import Sink from './pages/Sink.vue'
 import Cursors from './pages/Cursors.vue'
+import FailoverRebuild from './pages/FailoverRebuild.vue'
 
 export default createRouter({
   history: createWebHistory(),
@@ -19,5 +20,6 @@ export default createRouter({
     { path: '/quarantine', component: Quarantine },
     { path: '/sink', component: Sink },
     { path: '/cursors', component: Cursors },
+    { path: '/failover-rebuild', component: FailoverRebuild },
   ],
 })

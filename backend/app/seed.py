@@ -70,6 +70,23 @@ def init_db():
             applied_at TEXT NOT NULL,
             PRIMARY KEY(stream_id, seq)
         );
+        CREATE TABLE IF NOT EXISTS failover_rebuild_tasks(
+            id INTEGER PRIMARY KEY,
+            stream_id INTEGER NOT NULL,
+            status TEXT NOT NULL,
+            gate TEXT NOT NULL,
+            adoptable INTEGER NOT NULL,
+            candidate_cursor INTEGER NOT NULL,
+            cursor_before INTEGER NOT NULL,
+            cursor_after INTEGER,
+            scan_counts_json TEXT NOT NULL,
+            evidence_json TEXT NOT NULL,
+            basis_json TEXT NOT NULL,
+            reasons_json TEXT NOT NULL,
+            audit_json TEXT NOT NULL,
+            created_at TEXT NOT NULL,
+            decided_at TEXT
+        );
         """
     )
     if conn.execute("SELECT COUNT(*) c FROM streams").fetchone()["c"] == 0:
